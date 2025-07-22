@@ -1,69 +1,113 @@
-# React + TypeScript + Vite
+# NCB Data Collection & Analytics System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project delivers an integrated Data Collection and Analytics platform for the Narcotics Control Bureau, India. It provides a web-based portal for monthly narcotics data entry, advanced analytics, forecasting, and intelligence generation to support strategic decision making and operational efficiency.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Monthly Data Entry Portal
+- Web-based interface compatible with Chrome, Firefox, Safari, Edge
+- Responsive design for desktop, tablet, mobile (320px to 4K)
+- English and Hindi Unicode support
+- Role-based dashboards (State Officials, Regional Officers, NCB Staff)
+- Standardized data entry forms with dynamic substance-based fields
+- Multi-stage submission workflow with automated email notifications
 
-## Expanding the ESLint configuration
+### 2. Smart Data Suggestions
+- Automated pre-fill of prior month data values
+- Contextual suggestions based on historical patterns and similar cases
+- Editable suggestions with change tracking and bulk edit capabilities
+- Data pattern recognition and anomaly alerts
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. Multi-format Data Import
+- Excel (.xlsx, .xls) upload with predefined templates and validation
+- RESTful API integration supporting JSON and XML with rate limiting
+- Manual entry interface with keyboard shortcuts and rapid data entry features
+- Standardized import workflow (Upload → Validate → Preview → Confirm → Import)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 4. Data Validation Engine
+- Real-time front-end validation for format, range, and mandatory fields
+- Backend validation for data integrity checks, cross-field rules, duplicate detection
+- Configurable rules engine with rule testing and audit logs
+- Data quality scoring, completeness checks, and multilingual error management
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 5. Analytics & Network Visualization System
+- Advanced analytics with explainable AI and transparency controls
+- Model documentation, performance metrics, and confidence intervals
+- Complete data lineage tracking and bias mitigation strategies
+- Graph analytics, geospatial visualization, and link analysis support
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 6. User Personas & Access Control
+- Persona-based requirements for State Officials, State Managers, NCB Admin, Senior Management, Investigation Teams
+- Role-based access matrix with hierarchical data boundaries
+- Multi-factor authentication, AES-256 encryption, session management, audit trails
+- Compliance with government IT security and data protection guidelines
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 7. Use Cases
+1. Configurable Reminder System  
+2. Data Collection Workflow  
+3. Reminder Management Workflow  
+4. Escalation Management  
+5. Forecasting Engine  
+6. Threshold-based Alerts  
+7. Trend Analysis  
+8. Comparative Analytics  
+9. Drug Network Mapping  
+10. Geospatial Analytics  
+11. Link Analysis  
+12. Case Investigation Dashboard  
+13. Seasonal Demand Forecasting  
+14. Resource Allocation Optimization  
+15. Risk Assessment Modelling  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Each use case defines actor workflows, data models, processing logic, and actionable intelligence outputs to optimize operations and ensure timely compliance.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 8. Reports & Dashboards
+- Monthly State Performance Report  
+- Drug Seizure Trends Report  
+- Enforcement Efficiency Report  
+- Cross-Border Intelligence Report  
+- Executive Dashboard with custom KPIs  
+- Investigation & Network Visualization Reports  
+
+### 9. Historical Data Management
+- Tiered data storage (Active, Archive, Deep Archive) with audit trails
+- Advanced retrieval with filters (date, location, substance, case, officer)
+- Bulk export (Excel, CSV, PDF) and data anonymization features
+- Blockchain-based integrity verification and secure disposal
+
+### 10. System Architecture and Operations
+- Service-oriented, cloud-native design with auto-scaling
+- 99.5% uptime SLA, 24x7 monitoring, proactive maintenance
+- Real-time and batch processing support
+- SMS delivery within 30 seconds, dashboard update within 5 seconds
+- Performance: form load < 3 seconds, concurrent access up to 500 users
+
+## Installation and Deployment
+1. Prerequisites: Node.js v14+, Python 3.8+, PostgreSQL, Redis  
+2. Clone repository and install dependencies:
+   ```bash
+   git clone <repo_url>
+   cd ncb-data-analytics
+   npm install
+   pip install -r requirements.txt
+   ```
+3. Configure environment variables in `.env`  
+4. Initialize database and run migrations:
+   ```bash
+   python manage.py migrate
+   ```
+5. Build and start services:
+   ```bash
+   npm run build
+   npm start
+   python manage.py runserver
+   ```
+6. Access portal at `https://<domain>/`
+
+## Contributing
+- Fork the repository and create feature branches  
+- Adhere to code style and commit guidelines  
+- Submit pull requests with detailed descriptions and tests  
+
+
