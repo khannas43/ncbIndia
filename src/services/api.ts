@@ -3,15 +3,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.VITE_API_URL,
+    baseUrl: import.meta.env.VITE_API_URL,
   }),
   tagTypes: ['MonthlyData', 'Analytics', 'Reports'],
   endpoints: (builder) => ({
-    getMonthlyData: builder.query<any, void>({
+    getMonthlyData: builder.query<unknown, void>({
       query: () => ({ url: '/monthly-data' }),
       providesTags: ['MonthlyData'],
     }),
-    postMonthlyData: builder.mutation<any, any>({
+    postMonthlyData: builder.mutation<unknown, unknown>({
       query: (body) => ({
         url: '/monthly-data',
         method: 'POST',
@@ -19,11 +19,11 @@ export const api = createApi({
       }),
       invalidatesTags: ['MonthlyData'],
     }),
-    getAnalytics: builder.query<any, void>({
+    getAnalytics: builder.query<unknown, void>({
       query: () => ({ url: '/analytics' }),
       providesTags: ['Analytics'],
     }),
-    getReports: builder.query<any, void>({
+    getReports: builder.query<unknown, void>({
       query: () => ({ url: '/reports' }),
       providesTags: ['Reports'],
     }),
