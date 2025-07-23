@@ -12,6 +12,7 @@ interface ReportsData {
   recentCases: number
 }
 
+
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -20,6 +21,7 @@ export const api = createApi({
   tagTypes: ['MonthlyData', 'Analytics', 'Reports'],
   endpoints: (builder) => ({
     getMonthlyData: builder.query<MonthlyData, void>({
+
       query: () => ({ url: '/monthly-data' }),
       providesTags: ['MonthlyData'],
     }),
@@ -36,6 +38,7 @@ export const api = createApi({
       providesTags: ['Analytics'],
     }),
     getReports: builder.query<ReportsData, void>({
+
       query: () => ({ url: '/reports' }),
       providesTags: ['Reports'],
     }),

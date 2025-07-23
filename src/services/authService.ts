@@ -31,6 +31,7 @@ export async function login() {
     console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
     return
   }
+
   const verifier = generateCodeVerifier()
   sessionStorage.setItem(CODE_VERIFIER_KEY, verifier)
   const challenge = await generateCodeChallenge(verifier)
@@ -46,12 +47,11 @@ export async function login() {
 
   window.location.assign(`${AUTH_BASE_URL}/authorize?${params.toString()}`)
 }
-
-export async function handleRedirectCallback() {
   if (!AUTH_BASE_URL || !CLIENT_ID) {
     console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
     return
   }
+
   const params = new URLSearchParams(window.location.search)
   const code = params.get('code')
   const verifier = sessionStorage.getItem(CODE_VERIFIER_KEY)
@@ -100,6 +100,7 @@ export async function refreshToken() {
 }
 
 export async function logout() {
+
   if (!AUTH_BASE_URL) {
     console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL')
     return

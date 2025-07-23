@@ -34,6 +34,7 @@ export default function LoginPage() {
         label="Username"
         value={username}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+
         autoComplete="username"
       />
       <TextField
@@ -41,6 +42,7 @@ export default function LoginPage() {
         type="password"
         value={password}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+
         autoComplete="current-password"
       />
       <Button type="submit" variant="contained" disabled={loading}>
