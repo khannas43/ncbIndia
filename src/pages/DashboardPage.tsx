@@ -1,4 +1,8 @@
-import { Grid, Card, CardContent, Typography, CircularProgress } from '@mui/material'
+import Grid from '@mui/material/GridLegacy'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import CircularProgress from '@mui/material/CircularProgress'
 import {
   useGetMonthlyDataQuery,
   useGetAnalyticsQuery,

@@ -1,8 +1,10 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { AUTH_BASE_URL, handleRedirectCallback, login, logout } from '../services/authService'
 
 interface AuthContextValue {
-  user: any | null
+  user: unknown | null
   isAuthenticated: boolean
   login: () => Promise<void>
   logout: () => Promise<void>
@@ -16,7 +18,7 @@ const AuthContext = createContext<AuthContextValue>({
 })
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<any | null>(null)
+  const [user, setUser] = useState<unknown | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {

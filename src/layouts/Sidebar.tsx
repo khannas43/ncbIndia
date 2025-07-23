@@ -1,6 +1,7 @@
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Toolbar from '@mui/material/Toolbar'
 import { Link } from 'react-router-dom'
@@ -24,9 +25,8 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
   const { user } = useAuth()
-  const roles: string[] = Array.isArray((user as any)?.roles)
-    ? (user as any).roles
-    : []
+  const userRoles = (user as { roles?: string[] } | null)?.roles
+  const roles: string[] = Array.isArray(userRoles) ? userRoles : []
 
   const links = navItems.filter(
     (item) => !item.roles || item.roles.some((r) => roles.includes(r)),
@@ -37,8 +37,10 @@ export default function Sidebar() {
       <Toolbar />
       <List>
         {links.map((item) => (
-          <ListItem button key={item.to} component={Link} to={item.to}>
-            <ListItemText primary={item.label} />
+          <ListItem key={item.to} disablePadding>
+            <ListItemButton component={Link} to={item.to}>
+              <ListItemText primary={item.label} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>

@@ -1,7 +1,7 @@
-export const AUTH_BASE_URL = process.env.VITE_AUTH_BASE_URL || ''
-export const CLIENT_ID = process.env.VITE_AUTH_CLIENT_ID || ''
-export const REDIRECT_URI = process.env.VITE_AUTH_REDIRECT_URI || window.location.origin
-export const SCOPE = process.env.VITE_AUTH_SCOPE || ''
+export const AUTH_BASE_URL = import.meta.env.VITE_AUTH_BASE_URL || ''
+export const CLIENT_ID = import.meta.env.VITE_AUTH_CLIENT_ID || ''
+export const REDIRECT_URI = import.meta.env.VITE_AUTH_REDIRECT_URI || window.location.origin
+export const SCOPE = import.meta.env.VITE_AUTH_SCOPE || ''
 
 const CODE_VERIFIER_KEY = 'pkce_code_verifier'
 
