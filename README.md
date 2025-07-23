@@ -92,7 +92,11 @@ Each use case defines actor workflows, data models, processing logic, and action
    npm install
    pip install -r requirements.txt
    ```
-3. Configure environment variables in `.env`  
+3. Configure environment variables in `.env` (see `.env.example` for keys):
+   ```bash
+   cp .env.example .env
+   # edit .env and provide values
+   ```
 4. Initialize database and run migrations:
    ```bash
    python manage.py migrate
@@ -104,6 +108,17 @@ Each use case defines actor workflows, data models, processing logic, and action
    python manage.py runserver
    ```
 6. Access portal at `https://<domain>/`
+
+### Environment Variables
+The application relies on the following variables in `.env`:
+
+| Key | Description |
+|-----|-------------|
+| `VITE_AUTH_BASE_URL` | OAuth2 provider base URL |
+| `VITE_AUTH_CLIENT_ID` | OAuth2 client ID |
+| `VITE_AUTH_REDIRECT_URI` | Redirect URI registered with the provider |
+| `VITE_AUTH_SCOPE` | Requested OAuth2 scopes |
+| `VITE_API_URL` | Base URL for the backend API |
 
 ## Contributing
 - Fork the repository and create feature branches  

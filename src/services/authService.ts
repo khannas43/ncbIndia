@@ -27,6 +27,11 @@ export async function generateCodeChallenge(verifier: string): Promise<string> {
 }
 
 export async function login() {
+  if (!AUTH_BASE_URL || !CLIENT_ID) {
+    console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
+    return
+  }
+
   const verifier = generateCodeVerifier()
   sessionStorage.setItem(CODE_VERIFIER_KEY, verifier)
   const challenge = await generateCodeChallenge(verifier)
@@ -42,8 +47,11 @@ export async function login() {
 
   window.location.assign(`${AUTH_BASE_URL}/authorize?${params.toString()}`)
 }
+  if (!AUTH_BASE_URL || !CLIENT_ID) {
+    console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
+    return
+  }
 
-export async function handleRedirectCallback() {
   const params = new URLSearchParams(window.location.search)
   const code = params.get('code')
   const verifier = sessionStorage.getItem(CODE_VERIFIER_KEY)
@@ -73,6 +81,10 @@ export async function handleRedirectCallback() {
 }
 
 export async function refreshToken() {
+  if (!AUTH_BASE_URL || !CLIENT_ID) {
+    console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
+    return
+  }
   const body = new URLSearchParams({
     grant_type: 'refresh_token',
     client_id: CLIENT_ID,
@@ -88,6 +100,11 @@ export async function refreshToken() {
 }
 
 export async function logout() {
+
+  if (!AUTH_BASE_URL) {
+    console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL')
+    return
+  }
   await fetch(`${AUTH_BASE_URL}/logout`, {
     method: 'POST',
     credentials: 'include',
