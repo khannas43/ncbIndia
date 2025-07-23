@@ -47,6 +47,8 @@ export async function login() {
 
   window.location.assign(`${AUTH_BASE_URL}/authorize?${params.toString()}`)
 }
+
+export async function handleAuthCallback() {
   if (!AUTH_BASE_URL || !CLIENT_ID) {
     console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
     return
@@ -85,10 +87,12 @@ export async function refreshToken() {
     console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL and VITE_AUTH_CLIENT_ID')
     return
   }
+
   const body = new URLSearchParams({
     grant_type: 'refresh_token',
     client_id: CLIENT_ID,
   })
+
   await fetch(`${AUTH_BASE_URL}/token`, {
     method: 'POST',
     headers: {
@@ -100,11 +104,11 @@ export async function refreshToken() {
 }
 
 export async function logout() {
-
   if (!AUTH_BASE_URL) {
     console.error('Missing OAuth configuration. Please set VITE_AUTH_BASE_URL')
     return
   }
+
   await fetch(`${AUTH_BASE_URL}/logout`, {
     method: 'POST',
     credentials: 'include',
