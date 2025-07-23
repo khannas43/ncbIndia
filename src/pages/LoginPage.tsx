@@ -1,0 +1,51 @@
+import { useState } from 'react'
+import {
+  Box,
+  Button,
+  CircularProgress,
+  TextField,
+  Typography,
+} from '@mui/material'
+import useAuth from '../hooks/useAuth'
+
+export default function LoginPage() {
+  const { login } = useAuth()
+  const [loading, setLoading] = useState(false)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    await login()
+  }
+
+  return (
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 300, m: 'auto', mt: 8 }}
+    >
+      <Typography variant="h5" align="center">
+        Login
+      </Typography>
+      <TextField
+        label="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        autoComplete="username"
+      />
+      <TextField
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        autoComplete="current-password"
+      />
+      <Button type="submit" variant="contained" disabled={loading}>
+        Login
+      </Button>
+      {loading && <CircularProgress sx={{ alignSelf: 'center' }} />}
+    </Box>
+  )
+}
