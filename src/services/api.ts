@@ -1,5 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+interface MonthlyData {
+  totalSeizures: number
+}
+
+interface AnalyticsData {
+  alertCount: number
+}
+
+interface ReportsData {
+  recentCases: number
+}
+
+
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -7,7 +20,8 @@ export const api = createApi({
   }),
   tagTypes: ['MonthlyData', 'Analytics', 'Reports'],
   endpoints: (builder) => ({
-    getMonthlyData: builder.query<unknown, void>({
+    getMonthlyData: builder.query<MonthlyData, void>({
+
       query: () => ({ url: '/monthly-data' }),
       providesTags: ['MonthlyData'],
     }),
@@ -19,11 +33,12 @@ export const api = createApi({
       }),
       invalidatesTags: ['MonthlyData'],
     }),
-    getAnalytics: builder.query<unknown, void>({
+    getAnalytics: builder.query<AnalyticsData, void>({
       query: () => ({ url: '/analytics' }),
       providesTags: ['Analytics'],
     }),
-    getReports: builder.query<unknown, void>({
+    getReports: builder.query<ReportsData, void>({
+
       query: () => ({ url: '/reports' }),
       providesTags: ['Reports'],
     }),

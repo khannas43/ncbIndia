@@ -34,7 +34,7 @@ export default function Header() {
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           NCB Analytics
         </Typography>
-        {user && (
+        {user ? (
           <>
             <IconButton color="inherit" onClick={handleMenu}>
               <AccountCircle />
@@ -43,7 +43,9 @@ export default function Header() {
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </>
-        )}
+          
+        ) : null}
+
       </Toolbar>
     </AppBar>
   )
