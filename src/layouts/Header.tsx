@@ -43,7 +43,9 @@ export default function Header() {
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </>
+          
         ) : null}
+
       </Toolbar>
     </AppBar>
   )
