@@ -1,10 +1,9 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress'
 import ProtectedRoute from '../components/ProtectedRoute'
 
 const LoginPage = lazy(() => import('../pages/LoginPage'))
-const HomePage = lazy(() => import('../pages/HomePage'))
 const DashboardPage = lazy(() => import('../pages/DashboardPage'))
 const DataEntryPage = lazy(() => import('../pages/DataEntryPage'))
 const AnalyticsPage = lazy(() => import('../pages/AnalyticsPage'))
@@ -24,14 +23,7 @@ export default function AppRoutes() {
         }
       />
       <Route element={<ProtectedRoute />}>
-        <Route
-          path="/"
-          element={
-            <Suspense fallback={<CircularProgress />}>
-              <HomePage />
-            </Suspense>
-          }
-        />
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route
           path="/dashboard"
           element={
